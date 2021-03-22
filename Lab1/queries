@@ -1,0 +1,390 @@
+bash: cd: cassandra/apache_cassandra-3.11.0: No such file or directory
+bmsce@bmsce-Precision-T1700:~$ cd cassandra/apache-cassandra-3.11.0
+bmsce@bmsce-Precision-T1700:~/cassandra/apache-cassandra-3.11.0$ cd bin
+bmsce@bmsce-Precision-T1700:~/cassandra/apache-cassandra-3.11.0/bin$ ./cqlsh
+Connected to Test Cluster at 127.0.0.1:9042.
+[cqlsh 5.0.1 | Cassandra 3.11.4 | CQL spec 3.4.4 | Native protocol v4]
+Use HELP for help.
+cqlsh> create keyspace with replication = {
+   ... 'class':'Simple Statergy',
+   ... 'replication_factor':1 };
+SyntaxException: line 1:16 no viable alternative at input 'with' (create keyspace [with]...)
+cqlsh> create keyspace Students with replication = { 'class':'Simple Statergy', 'replication_factor':1 };
+ConfigurationException: Unable to find replication strategy class 'org.apache.cassandra.locator.Simple Statergy'
+cqlsh> create keyspace Students with replication = { 'class':'SimpleStatergy', 'replication_factor':1 };
+ConfigurationException: Unable to find replication strategy class 'org.apache.cassandra.locator.SimpleStatergy'
+cqlsh> create keyspace Students with replication = { 'class':'SimpleStratergy', 'replication_factor':1 };
+ConfigurationException: Unable to find replication strategy class 'org.apache.cassandra.locator.SimpleStratergy'
+cqlsh> create keyspace Students with replication = { 'class':'SimpleStrategy', 'replication_factor':1 };
+cqlsh> Describe keyspaces
+
+students  system_schema  system_auth  system  system_distributed  system_traces
+
+cqlsh> create keyspace Students with replication = { 'class':'SimpleStrategy', 'replication_factor':1 };
+AlreadyExists: Keyspace 'students' already exists
+cqlsh> use students
+   ... 
+   ... cqlsh:students>create table Student_Info(
+   ... RollNo int PRIMARY KEY,
+   ... StudName text,
+   ... DateofJoining timestamp,
+   ... create keyspace Students with replication = { 'class':'SimpleStatergy', 'replication_factor':1 };
+[1]+  Stopped                 ./cqlsh
+bmsce@bmsce-Precision-T1700:~/cassandra/apache-cassandra-3.11.0/bin$ cd cassandra/apache_cassandra-3.11.0/
+bash: cd: cassandra/apache_cassandra-3.11.0/: Not a directory
+bmsce@bmsce-Precision-T1700:~/cassandra/apache-cassandra-3.11.0/bin$ cd cassandra/apache-cassandra-3.11.0/
+bash: cd: cassandra/apache-cassandra-3.11.0/: Not a directory
+bmsce@bmsce-Precision-T1700:~/cassandra/apache-cassandra-3.11.0/bin$ cd cassandra/apache-cassandra-3.11.0
+bmsce@bmsce-Precision-T1700:~/cassandra/apache-cassandra-3.11.0/bin$ cd cassandra/apache-cassandra-3.11.0
+bash: cd: cassandra/apache-cassandra-3.11.0: Not a directory
+bmsce@bmsce-Precision-T1700:~/cassandra/apache-cassandra-3.11.0/bin$ ccd bin
+
+Command 'ccd' not found, did you mean:
+
+  command 'cc' from deb gcc (4:8.3.0-1ubuntu3)
+  command 'cc' from deb clang (1:8.0-48~exp1ubuntu1)
+  command 'cc' from deb pentium-builder (0.21ubuntu1)
+  command 'cc' from deb tcc (0.9.27-8)
+  command 'cct' from deb proj-bin (5.2.0-1)
+  command 'cbd' from deb centreon-broker (18.10.0-4)
+  command 'cdcd' from deb cdcd (0.6.6-13.1build2)
+  command 'ccx' from deb calculix-ccx (2.11-1build2)
+  command 'ccr' from deb codecrypt (1.8-1)
+  command 'cccd' from deb cccd (0.3beta4-7.1build1)
+  command 'hcd' from deb hfsutils (3.2.6-14)
+  command 'ccs' from deb unanimity (3.3.0+dfsg-2.1)
+  command 'mcd' from deb mtools (4.0.23-1)
+  command 'bcd' from deb bsdgames (2.17-28)
+
+Try: sudo apt install <deb name>
+
+bmsce@bmsce-Precision-T1700:~/cassandra/apache-cassandra-3.11.0/bin$ cd bin
+bash: cd: bin: No such file or directory
+bmsce@bmsce-Precision-T1700:~/cassandra/apache-cassandra-3.11.0/bin$ ./cqlsh
+Connected to Test Cluster at 127.0.0.1:9042.
+[cqlsh 5.0.1 | Cassandra 3.11.4 | CQL spec 3.4.4 | Native protocol v4]
+Use HELP for help.
+cqlsh> use students
+   ... cqlsh:students>create table Student_Info(
+   ... RollNo int PRIMARY KEY,
+   ... StudName text,
+   ... DateofJoining timestamp,
+   ... 
+   ... 
+   ... 
+   ... 
+Statements are terminated with a ';'.  You can press CTRL-C to cancel an incomplete statement.
+   ... 
+   ... 
+   ... 
+Statements are terminated with a ';'.  You can press CTRL-C to cancel an incomplete statement.
+   ... 
+   ... 
+   ... 
+Statements are terminated with a ';'.  You can press CTRL-C to cancel an incomplete statement.
+   ... 
+   ... 
+   ... 
+Statements are terminated with a ';'.  You can press CTRL-C to cancel an incomplete statement.
+   ... 
+cqlsh> 
+cqlsh> students>create table Student_Info(
+   ... Rollno int primary key,
+   ... stdname text,
+   ... DateOfJoining timestamp,
+   ... LastExamPercent double);
+SyntaxException: line 1:0 no viable alternative at input 'students' ([students]...)
+cqlsh> Students>create table Student_Info( Rollno int primary key, stdname text, DateOfJoining timestamp, LastExamPercent double);
+SyntaxException: line 1:0 no viable alternative at input 'Students' ([Students]...)
+cqlsh> use Students
+   ... Students>create table Student_Info( Rollno int primary key, stdname text, DateOfJoining timestamp, LastExamPercent double);
+Improper use command.
+cqlsh> use Students
+   ... Students>create table Student_Info( Rollno int primary key, stdname text, DateOfJoining timestamp, LastExamPercent double);
+Improper use command.
+cqlsh> use Students
+   ... Students>create table Student_Info( Rollno int primary key, stdname text, DateOfJoining timestamp, LastExamPercent double);
+Improper use command.
+cqlsh> Students>create table Student_Info( Rollno int primary key, stdname text, DateOfJoining timestamp, LastExamPercent double);
+SyntaxException: line 1:0 no viable alternative at input 'Students' ([Students]...)
+cqlsh> use Students
+   ... Students>create table Student_Info( Rollno int primary key, stdname text, DateOfJoining timestamp, LastExamPercent double);
+Improper use command.
+cqlsh> use Students;
+cqlsh:students> Students>create table Student_Info( Rollno int primary key, stdname text, DateOfJoining timestamp, LastExamPercent double);
+SyntaxException: line 1:0 no viable alternative at input 'Students' ([Students]...)
+cqlsh:students> create table Student_Info( Rollno int primary key, stdname text, DateOfJoining timestamp, LastExamPercent double);
+cqlsh:students> describe tables
+
+student_info
+
+cqlsh:students> ddescribe table Student_info
+            ... 
+[2]+  Stopped                 ./cqlsh
+bmsce@bmsce-Precision-T1700:~/cassandra/apache-cassandra-3.11.0/bin$ ./ccqlsh
+bash: ./ccqlsh: No such file or directory
+bmsce@bmsce-Precision-T1700:~/cassandra/apache-cassandra-3.11.0/bin$ ./cqlsh
+Connected to Test Cluster at 127.0.0.1:9042.
+[cqlsh 5.0.1 | Cassandra 3.11.4 | CQL spec 3.4.4 | Native protocol v4]
+Use HELP for help.
+cqlsh> describe table student;
+No keyspace specified and no current keyspace
+cqlsh> use keyspace Students
+   ... 
+[3]+  Stopped                 ./cqlsh
+bmsce@bmsce-Precision-T1700:~/cassandra/apache-cassandra-3.11.0/bin$ ./cqlsh
+Connected to Test Cluster at 127.0.0.1:9042.
+[cqlsh 5.0.1 | Cassandra 3.11.4 | CQL spec 3.4.4 | Native protocol v4]
+Use HELP for help.
+cqlsh> use keyspace Students;
+Improper use command.
+cqlsh> use Students;
+cqlsh:students> describe tables;
+
+student_info
+
+cqlsh:students> describe table Student_info;
+
+CREATE TABLE students.student_info (
+    rollno int PRIMARY KEY,
+    dateofjoining timestamp,
+    lastexampercent double,
+    stdname text
+) WITH bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'chunk_length_in_kb': '64', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND crc_check_chance = 1.0
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99PERCENTILE';
+
+cqlsh:students> begin batch
+            ... insert into Student _Info(rollno, stdname, dateofjoining, llastexampercent)
+Invalid syntax at line 2, char 21
+  insert into Student _Info(rollno, stdname, dateofjoining, llastexampercent)
+                      ^
+cqlsh:students> begin batch
+            ... insert into Student _Info(rollno, stdname, dateofjoining, llastexampercent)
+Invalid syntax at line 2, char 21
+  insert into Student _Info(rollno, stdname, dateofjoining, llastexampercent)
+                      ^
+cqlsh:students> insert into Student_Info(rollno, stdname, dateofjoining, llastexampercent) values(1,'Nikhil Gowda','2018-07-22',82.6);
+InvalidRequest: Error from server: code=2200 [Invalid query] message="Undefined column name llastexampercent"
+cqlsh:students> begin batch
+            ... insert into Student_Info(rollno, stdname, dateofjoining, llastexampercent) values(1,'Nikhil Gowda','2018-07-22',82.6)
+            ... insert into Student_Info(rollno, stdname, dateofjoining, llastexampercent) values(2,'Rudramuni Swamy','2018-07-22',92.6)
+cqlsh:students> begin batch
+            ... insert into Student_Info(rollno, stdname, dateofjoining, lastexampercent) values(1,'Nikhil Gowda','2018-07-22',82.6)
+            ... insert into Student_Info(rollno, stdname, dateofjoining, lastexampercent) values(2,'Rudramuni Swamy','2018-07-22',92.6)
+            ... apply batch;
+cqlsh:students> select * from Student_Info;
+
+ rollno | dateofjoining                   | lastexampercent | stdname
+--------+---------------------------------+-----------------+-----------------
+      1 | 2018-07-21 18:30:00.000000+0000 |            82.6 |    Nikhil Gowda
+      2 | 2018-07-21 18:30:00.000000+0000 |            92.6 | Rudramuni Swamy
+
+(2 rows)
+cqlsh:students> select * from Student_Info where rollno = 1;
+
+ rollno | dateofjoining                   | lastexampercent | stdname
+--------+---------------------------------+-----------------+--------------
+      1 | 2018-07-21 18:30:00.000000+0000 |            82.6 | Nikhil Gowda
+
+(1 rows)
+cqlsh:students> select * from Student_Info where stdname = 'Rudramuni Swamy;
+            ... 
+cqlsh:students> select * from Student_Info where stdname = 'Rudramuni Swamy';
+InvalidRequest: Error from server: code=2200 [Invalid query] message="Cannot execute this query as it might involve data filtering and thus may have unpredictable performance. If you want to execute this query despite the performance unpredictability, use ALLOW FILTERING"
+cqlsh:students> select * from Student_Info where last classpercent=92.6;
+SyntaxException: line 1:38 no viable alternative at input 'classpercent' (select * from Student_Info where [last] classpercent...)
+cqlsh:students> select * from Student_Info where lastexampercent=92.6;
+InvalidRequest: Error from server: code=2200 [Invalid query] message="Cannot execute this query as it might involve data filtering and thus may have unpredictable performance. If you want to execute this query despite the performance unpredictability, use ALLOW FILTERING"
+cqlsh:students> update Sudent_Info set stdname = 'Nitish Banakar' where rollno = 2;
+InvalidRequest: Error from server: code=2200 [Invalid query] message="unconfigured table sudent_info"
+cqlsh:students> update Student_Info set stdname = 'Nitish Banakar' where rollno = 2;
+cqlsh:students> select * from Student_Info;
+
+ rollno | dateofjoining                   | lastexampercent | stdname
+--------+---------------------------------+-----------------+----------------
+      1 | 2018-07-21 18:30:00.000000+0000 |            82.6 |   Nikhil Gowda
+      2 | 2018-07-21 18:30:00.000000+0000 |            92.6 | Nitish Banakar
+
+(2 rows)
+cqlsh:students> select * from Student_Info where rollno in(1,2,3);
+
+ rollno | dateofjoining                   | lastexampercent | stdname
+--------+---------------------------------+-----------------+----------------
+      1 | 2018-07-21 18:30:00.000000+0000 |            82.6 |   Nikhil Gowda
+      2 | 2018-07-21 18:30:00.000000+0000 |            92.6 | Nitish Banakar
+
+(2 rows)
+cqlsh:students> create index on Student_Info(lastexampercent);
+cqlsh:students> select * from Student_Info where lastexampercent=92.6;
+
+ rollno | dateofjoining                   | lastexampercent | stdname
+--------+---------------------------------+-----------------+----------------
+      2 | 2018-07-21 18:30:00.000000+0000 |            92.6 | Nitish Banakar
+
+(1 rows)
+cqlsh:students> select stdname from Student_Info where lastexampercent=92.6;
+
+ stdname
+----------------
+ Nitish Banakar
+
+(1 rows)
+cqlsh:students> select stdname from Student_Info where lastexampercent in (92.6,82.6) limit=1;
+SyntaxException: line 1:75 no viable alternative at input '=' (... in (92.6,82.6) limit[=]...)
+cqlsh:students> select stdname from Student_Info limit=1;
+SyntaxException: line 1:38 no viable alternative at input '=' (select stdname from Student_Info limit[=]...)
+cqlsh:students> select stdname from Student_Info where lastexampercent in (92.6,82.6) limit 1;
+InvalidRequest: Error from server: code=2200 [Invalid query] message="IN predicates on non-primary-key columns (lastexampercent) is not yet supported"
+cqlsh:students> select stdname from Student_Info limit 1;
+
+ stdname
+--------------
+ Nikhil Gowda
+
+(1 rows)
+cqlsh:students> create index on Student_Info(lastexampercent);
+InvalidRequest: Error from server: code=2200 [Invalid query] message="Index student_info_lastexampercent_idx_1 is a duplicate of existing index student_info_lastexampercent_idx"
+cqlsh:students> select stdname from Student_Info where rollno in (1,2) limit 1;
+
+ stdname
+--------------
+ Nikhil Gowda
+
+(1 rows)
+cqlsh:students> select stdname from Student_Info where lastexampercent in (92.6,82.6) limit 1;
+InvalidRequest: Error from server: code=2200 [Invalid query] message="IN predicates on non-primary-key columns (lastexampercent) is not yet supported"
+cqlsh:students> select stdname as Name from Student_Info where rollno in (1,2) limit 1;
+
+ name
+--------------
+ Nikhil Gowda
+
+(1 rows)
+cqlsh:students> delete lastexampercent from Student_Info where rollno = 2;
+cqlsh:students> select * from Student_Info
+            ... 
+cqlsh:students> select * from Student_Info;
+
+ rollno | dateofjoining                   | lastexampercent | stdname
+--------+---------------------------------+-----------------+----------------
+      1 | 2018-07-21 18:30:00.000000+0000 |            82.6 |   Nikhil Gowda
+      2 | 2018-07-21 18:30:00.000000+0000 |            null | Nitish Banakar
+
+(2 rows)
+cqlsh:students> select * from Student_Info where rollno = 2;
+
+ rollno | dateofjoining                   | lastexampercent | stdname
+--------+---------------------------------+-----------------+----------------
+      2 | 2018-07-21 18:30:00.000000+0000 |            null | Nitish Banakar
+
+(1 rows)
+cqlsh:students> delete from Sudent_Info where rolllno = 2;
+InvalidRequest: Error from server: code=2200 [Invalid query] message="unconfigured table sudent_info"
+cqlsh:students> delete from Student_Info where rolllno = 2;
+InvalidRequest: Error from server: code=2200 [Invalid query] message="Undefined column name rolllno"
+cqlsh:students> delete from Student_Info where rollno = 2;
+cqlsh:students> select * from Student_Info;
+
+ rollno | dateofjoining                   | lastexampercent | stdname
+--------+---------------------------------+-----------------+--------------
+      1 | 2018-07-21 18:30:00.000000+0000 |            82.6 | Nikhil Gowda
+
+(1 rows)
+cqlsh:students> 
+[4]+  Stopped                 ./cqlsh
+bmsce@bmsce-Precision-T1700:~/cassandra/apache-cassandra-3.11.0/bin$ ./cql.sh
+bash: ./cql.sh: No such file or directory
+bmsce@bmsce-Precision-T1700:~/cassandra/apache-cassandra-3.11.0/bin$ ./cqlsh
+Connected to Test Cluster at 127.0.0.1:9042.
+[cqlsh 5.0.1 | Cassandra 3.11.4 | CQL spec 3.4.4 | Native protocol v4]
+Use HELP for help.
+cqlsh> use Students;
+cqlsh:students> create table project_details(
+            ... projectid int,
+            ... projectname text,
+            ... stdname text,
+            ... rating double,
+            ... duration int,
+            ... primary key(projectin,projectname));
+InvalidRequest: Error from server: code=2200 [Invalid query] message="Unknown definition projectin referenced in PRIMARY KEY"
+cqlsh:students> create table project_details( projectid int, projectname text, stdname text, rating double, duration int, primary key(projectid,projectname));
+cqlsh:students> begin batch
+            ... insert into project_details(projjeectid,project name,sttdname,rating,duration)
+            ... values(1,'Crop Disease Detection/Data Science','Pranav Jagadheesh',4.3,720)
+            ... insert into project_details(projjeectid,project name,sttdname,rating,duration)
+            ... values(2,'Migrane detection/Data Science','Prathibha',2.3,1420)
+            ... insert into project_details(projjeectid,project name,sttdname,rating,duration)
+            ... values(3,'College mapping/Data Science','Reventh',4.52,2210)
+            ... apply batch;
+SyntaxException: line 2:48 mismatched input 'name' expecting ')' (...insert into project_details(projjeectid,project [name]...)
+cqlsh:students> begin batch insert into project_details(projectid,projectname,sttdname,rating,duration) values(1,'Crop Disease Detection/Data Science','Pranav Jagadheesh',4.3,720) insert into project_details(projectid,projectname,sttdname,rating,duration) values(2,'Migrane detection/Data Science','Prathibha',2.3,1420) insert into project_details(projectid,projectname,sttdname,rating,duration) values(3,'College mapping/Data Science','Reventh',4.52,2210) apply batch;
+InvalidRequest: Error from server: code=2200 [Invalid query] message="Undefined column name sttdname"
+cqlsh:students> begin batch insert into project_details(projectid,projectname,stdname,rating,duration) values(1,'Crop Disease Detection/Data Science','Pranav Jagadheesh',4.3,720) insert into project_details(projectid,projectname,stdname,rating,duration) values(2,'Migrane detection/Data Science','Prathibha',2.3,1420) insert into project_details(projectid,projectname,stdname,rating,duration) values(3,'College mapping/Data Science','Reventh',4.52,2210) apply batch;
+cqlsh:students> select * from project_details;
+
+ projectid | projectname                         | duration | rating | stdname
+-----------+-------------------------------------+----------+--------+-------------------
+         1 | Crop Disease Detection/Data Science |      720 |    4.3 | Pranav Jagadheesh
+         2 |      Migrane detection/Data Science |     1420 |    2.3 |         Prathibha
+         3 |        College mapping/Data Science |     2210 |   4.52 |           Reventh
+
+(3 rows)
+cqlsh:students> select * from project_details where projectid = 2;
+
+ projectid | projectname                    | duration | rating | stdname
+-----------+--------------------------------+----------+--------+-----------
+         2 | Migrane detection/Data Science |     1420 |    2.3 | Prathibha
+
+(1 rows)
+cqlsh:students> select * from project_details where projectid in(1,2) order by projectname desc;
+InvalidRequest: Error from server: code=2200 [Invalid query] message="Cannot page queries with both ORDER BY and a IN restriction on the partition key; you must either remove the ORDER BY or the IN and sort client side, or disable paging for this query"
+cqlsh:students> select * from project_details where projectid in (1,2) order by projectname desc;
+InvalidRequest: Error from server: code=2200 [Invalid query] message="Cannot page queries with both ORDER BY and a IN restriction on the partition key; you must either remove the ORDER BY or the IN and sort client side, or disable paging for this query"
+cqlsh:students> select * from project_details order by projectname desc;
+InvalidRequest: Error from server: code=2200 [Invalid query] message="ORDER BY is only supported when the partition key is restricted by an EQ or an IN."
+cqlsh:students> select * from project_details ORDER BY projectname desc;
+InvalidRequest: Error from server: code=2200 [Invalid query] message="ORDER BY is only supported when the partition key is restricted by an EQ or an IN."
+cqlsh:students> select * from project_details where projectid in (1,2) order by projectid desc;
+InvalidRequest: Error from server: code=2200 [Invalid query] message="Order by is currently only supported on the clustered columns of the PRIMARY KEY, got projectid"
+cqlsh:students> select * from project_details where projectid in (1,2) order by projectname desc;
+InvalidRequest: Error from server: code=2200 [Invalid query] message="Cannot page queries with both ORDER BY and a IN restriction on the partition key; you must either remove the ORDER BY or the IN and sort client side, or disable paging for this query"
+cqlsh:students> paging off
+Disabled Query paging.
+cqlsh:students> select * from project_details where projectid in (1,2) order by projectname desc;
+
+ projectid | projectname                         | duration | rating | stdname
+-----------+-------------------------------------+----------+--------+-------------------
+         2 |      Migrane detection/Data Science |     1420 |    2.3 |         Prathibha
+         1 | Crop Disease Detection/Data Science |      720 |    4.3 | Pranav Jagadheesh
+
+(2 rows)
+cqlsh:students> select * from project_details where projectid in (1,2) order by projectname;
+
+ projectid | projectname                         | duration | rating | stdname
+-----------+-------------------------------------+----------+--------+-------------------
+         1 | Crop Disease Detection/Data Science |      720 |    4.3 | Pranav Jagadheesh
+         2 |      Migrane detection/Data Science |     1420 |    2.3 |         Prathibha
+
+(2 rows)
+cqlsh:students> select * from project_details where projectid in (1,2) order by projectname;
+
+ projectid | projectname                         | duration | rating | stdname
+-----------+-------------------------------------+----------+--------+-------------------
+         1 | Crop Disease Detection/Data Science |      720 |    4.3 | Pranav Jagadheesh
+         2 |      Migrane detection/Data Science |     1420 |    2.3 |         Prathibha
+
+(2 rows)
+cqlsh:students> 
+cqlsh:students> 
