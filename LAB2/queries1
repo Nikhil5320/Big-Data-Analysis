@@ -1,0 +1,277 @@
+bmsce@bmsce-Precision-T1700:~$ cd cassandra/apache-cassandra-3.11.0
+bmsce@bmsce-Precision-T1700:~/cassandra/apache-cassandra-3.11.0$ cd bin
+bmsce@bmsce-Precision-T1700:~/cassandra/apache-cassandra-3.11.0/bin$ ./cqlsh
+Connected to Test Cluster at 127.0.0.1:9042.
+[cqlsh 5.0.1 | Cassandra 3.11.4 | CQL spec 3.4.4 | Native protocol v4]
+Use HELP for help.
+cqlsh> create keyspace students with replication={
+   ... 'class':'SimpleStrategy',
+   ... 'replication_factor':1};
+cqlsh> describe keyspaces
+
+students       system_auth  student             system_traces
+system_schema  system       system_distributed
+
+cqlsh> select * from students
+   ... ;
+InvalidRequest: Error from server: code=2200 [Invalid query] message="No keyspace has been specified. USE a keyspace, or explicitly specify keyspace.tablename"
+cqlsh> select * from students ;
+InvalidRequest: Error from server: code=2200 [Invalid query] message="No keyspace has been specified. USE a keyspace, or explicitly specify keyspace.tablename"
+cqlsh> select * from students;
+InvalidRequest: Error from server: code=2200 [Invalid query] message="No keyspace has been specified. USE a keyspace, or explicitly specify keyspace.tablename"
+cqlsh> select * from system.students;
+InvalidRequest: Error from server: code=2200 [Invalid query] message="unconfigured table students"
+cqlsh> use students
+   ... ;
+cqlsh:students> create table student_info(
+            ... usn text primary key,
+            ... name text,
+            ... admission_date date,
+            ... prev_clssPercent double);
+cqlsh:students> insert into student_info(usn,name,admission_date,prev_classPercent) values(1BM18CS061,Nikhil Gowda,9/03/2018,92.0);
+Invalid syntax at line 1, char 101
+  insert into student_info(usn,name,admission_date,prev_classPercent) values(1BM18CS061,Nikhil Gowda,9/03/2018,92.0);
+                                                                                                      ^
+cqlsh:students> insert into student_info(usn,name,admission_date,prev_classPercent) values(1BM18CS061,Nikhil Gowda,9-03-2018,92.0);
+SyntaxException: line 1:77 mismatched character 'M' expecting set null
+cqlsh:students> insert into student_info(usn,name,admission_date,prev_classPercent) values('1BM18CS061','Nikhil Gowda',9-03-2018,92.0);
+SyntaxException: line 1:104 mismatched input '-03' expecting ')' (...prev_classPercent) values('1BM18CS061','Nikhil Gowda',9[-03]...)
+cqlsh:students> insert into student_info(usn,name,admission_date,prev_classPercent) values('1BM18CS061','Nikhil Gowda',9/03/2018,92.0);
+Invalid syntax at line 1, char 105
+  insert into student_info(usn,name,admission_date,prev_classPercent) values('1BM18CS061','Nikhil Gowda',9/03/2018,92.0);
+                                                                                                          ^
+cqlsh:students> insert into student_info(usn,name,admission_date,prev_classPercent) values('1BM18CS061','Nikhil Gowda',2018-03-22,92.0);
+SyntaxException: line 1:107 mismatched input '-03' expecting ')' (...prev_classPercent) values('1BM18CS061','Nikhil Gowda',2018[-03]...)
+cqlsh:students> insert into student_info(usn,name,admission_date,prev_classPercent) values('1BM18CS061','Nikhil Gowda','2018-03-22',92.0);
+InvalidRequest: Error from server: code=2200 [Invalid query] message="Undefined column name prev_classpercent"
+cqlsh:students> insert into student_info(usn,name,admission_date,prev_classPercent) values('1BM18CS061','Nikhil Gowda',2018-03-22,92.0);
+SyntaxException: line 1:107 mismatched input '-03' expecting ')' (...prev_classPercent) values('1BM18CS061','Nikhil Gowda',2018[-03]...)
+cqlsh:students> cd..
+            ... 
+            ... 
+            ... 
+            ... 
+Statements are terminated with a ';'.  You can press CTRL-C to cancel an incomplete statement.
+            ... 
+            ... ;
+SyntaxException: line 1:0 no viable alternative at input 'cd' ([cd]...)
+cqlsh:students> cd
+            ... ;
+SyntaxException: line 1:0 no viable alternative at input 'cd' ([cd]...)
+cqlsh:students> cd;
+SyntaxException: line 1:0 no viable alternative at input 'cd' ([cd]...)
+cqlsh:students> exit;
+bmsce@bmsce-Precision-T1700:~/cassandra/apache-cassandra-3.11.0/bin$ ./cqlsh
+Connected to Test Cluster at 127.0.0.1:9042.
+[cqlsh 5.0.1 | Cassandra 3.11.4 | CQL spec 3.4.4 | Native protocol v4]
+Use HELP for help.
+cqlsh> create keyspace Employee with replication={
+   ... 'class':'SimpleStrategy',
+   ... 'replication_factor':1};
+cqlsh> use Employee
+   ... ;
+cqlsh:employee> create table Employee_info(
+            ... id int primary key,
+            ... name text,
+            ... dob date,
+            ... salary double,
+            ... 
+            ... ;
+SyntaxException: line 7:0 mismatched input ';' expecting ')' (...dob date,salary double,[;])
+cqlsh:employee> create table Employee_info( id int primary key, name text, date_joining date,designation text, salary double,dept text);
+cqlsh:employee> insert into Employee  (id,name,date_joining,designation,salary,dept) values(123,'Nikhil Gowda','HR',100000,'AgroTec');
+InvalidRequest: Error from server: code=2200 [Invalid query] message="unconfigured table employee"
+cqlsh:employee> insert into Employee_info  (id,name,date_joining,designation,salary,dept) values(123,'Nikhil Gowda','HR',100000,'AgroTec');
+InvalidRequest: Error from server: code=2200 [Invalid query] message="Unmatched column names/values"
+cqlsh:employee> insert into Employee_info  (id,name,date_joining,designation,salary,dept) values(123,'Nikhil Gowda',2021-11-03,'HR',100000,'AgroTec');
+SyntaxException: line 1:104 mismatched input '-11' expecting ')' (...dept) values(123,'Nikhil Gowda',2021[-11]...)
+cqlsh:employee> insert into Employee_info  (id,name,date_joining,designation,salary,dept) values(123,'Nikhil Gowda','2021-11-03','HR',100000,'AgroTec');
+cqlsh:employee> insert into Employee_info  (id,name,date_joining,designation,salary,dept) values(124,'Pranav Jagadheesh','2022-01-25','Senior Manager',2200000,'AgroTec');
+cqlsh:employee> select * from Employee_info;
+
+ id  | date_joining | dept    | designation    | name              | salary
+-----+--------------+---------+----------------+-------------------+---------
+ 123 |   2021-11-03 | AgroTec |             HR |      Nikhil Gowda |   1e+05
+ 124 |   2022-01-25 | AgroTec | Senior Manager | Pranav Jagadheesh | 2.2e+06
+
+(2 rows)
+cqlsh:employee> update Employee_info set name='Jagadheesh Pranav' where id=124;
+cqlsh:employee> select * from Employee_info;
+
+ id  | date_joining | dept    | designation    | name              | salary
+-----+--------------+---------+----------------+-------------------+---------
+ 123 |   2021-11-03 | AgroTec |             HR |      Nikhil Gowda |   1e+05
+ 124 |   2022-01-25 | AgroTec | Senior Manager | Jagadheesh Pranav | 2.2e+06
+
+(2 rows)
+cqlsh:employee> insert into Employee_info  (id,name,date_joining,designation,salary,dept) values(124,'Prakash Deshpandey','2012-01-25','Manager',0200000,'BioTec');
+cqlsh:employee> select * from Employee_info;
+
+ id  | date_joining | dept    | designation | name               | salary
+-----+--------------+---------+-------------+--------------------+--------
+ 123 |   2021-11-03 | AgroTec |          HR |       Nikhil Gowda |  1e+05
+ 124 |   2012-01-25 |  BioTec |     Manager | Prakash Deshpandey |  2e+05
+
+(2 rows)
+cqlsh:employee> insert into Employee_info  (id,name,date_joining,designation,salary,dept) values(128,'Pranav Jagadheesh','2022-01-25','Senior Manager',2200000,'AgroTec');
+cqlsh:employee> select * from Employee_info;
+
+ id  | date_joining | dept    | designation    | name               | salary
+-----+--------------+---------+----------------+--------------------+---------
+ 128 |   2022-01-25 | AgroTec | Senior Manager |  Pranav Jagadheesh | 2.2e+06
+ 123 |   2021-11-03 | AgroTec |             HR |       Nikhil Gowda |   1e+05
+ 124 |   2012-01-25 |  BioTec |        Manager | Prakash Deshpandey |   2e+05
+
+(3 rows)
+cqlsh:employee> insert into Employee_info  (id,name,date_joining,designation,salary,dept) values(132,'Swathi','2022-01-25','Teem Lead',200000,'AgroTec');
+cqlsh:employee> select * from Employee_info;
+
+ id  | date_joining | dept    | designation    | name               | salary
+-----+--------------+---------+----------------+--------------------+---------
+ 128 |   2022-01-25 | AgroTec | Senior Manager |  Pranav Jagadheesh | 2.2e+06
+ 132 |   2022-01-25 | AgroTec |      Teem Lead |             Swathi |   2e+05
+ 123 |   2021-11-03 | AgroTec |             HR |       Nikhil Gowda |   1e+05
+ 124 |   2012-01-25 |  BioTec |        Manager | Prakash Deshpandey |   2e+05
+
+(4 rows)
+cqlsh:employee> select * from Employee_info order by salary;
+InvalidRequest: Error from server: code=2200 [Invalid query] message="ORDER BY is only supported when the partition key is restricted by an EQ or an IN."
+cqlsh:employee> 
+cqlsh:employee> select * from Employee_info;
+
+ id  | date_joining | dept    | designation    | name               | salary
+-----+--------------+---------+----------------+--------------------+---------
+ 128 |   2022-01-25 | AgroTec | Senior Manager |  Pranav Jagadheesh | 2.2e+06
+ 132 |   2022-01-25 | AgroTec |      Teem Lead |             Swathi |   2e+05
+ 123 |   2021-11-03 | AgroTec |             HR |       Nikhil Gowda |   1e+05
+ 124 |   2012-01-25 |  BioTec |        Manager | Prakash Deshpandey |   2e+05
+
+(4 rows)
+cqlsh:employee> select * from Employee_info order by salary;
+InvalidRequest: Error from server: code=2200 [Invalid query] message="ORDER BY is only supported when the partition key is restricted by an EQ or an IN."
+cqlsh:employee> select * from Employee_info order by id;
+InvalidRequest: Error from server: code=2200 [Invalid query] message="ORDER BY is only supported when the partition key is restricted by an EQ or an IN."
+cqlsh:employee> select * from Employee_info order by salary;
+InvalidRequest: Error from server: code=2200 [Invalid query] message="ORDER BY is only supported when the partition key is restricted by an EQ or an IN."
+cqlsh:employee> alter table Employee_info add column projects text; 
+SyntaxException: line 1:46 mismatched input 'text' expecting EOF (...table Employee_info add column projects [text]...)
+cqlsh:employee> alter table Employee_info add  projects text; 
+cqlsh:employee> select * from Employee_info;
+
+ id  | date_joining | dept    | designation    | name               | projects | salary
+-----+--------------+---------+----------------+--------------------+----------+---------
+ 128 |   2022-01-25 | AgroTec | Senior Manager |  Pranav Jagadheesh |     null | 2.2e+06
+ 132 |   2022-01-25 | AgroTec |      Teem Lead |             Swathi |     null |   2e+05
+ 123 |   2021-11-03 | AgroTec |             HR |       Nikhil Gowda |     null |   1e+05
+ 124 |   2012-01-25 |  BioTec |        Manager | Prakash Deshpandey |     null |   2e+05
+
+(4 rows)
+cqlsh:employee> update Employee_info set projects = 'JustVend' in (128,132)
+            ... update Employee_info set projects = 'JustVend' in (128,132);
+SyntaxException: line 1:47 mismatched input 'in' expecting K_WHERE (...Employee_info set projects = 'JustVend' [in]...)
+cqlsh:employee> update Employee_info set projects = 'JustVend' where id in (128,132);
+cqlsh:employee> update Employee_info set projects = 'Greenkey' where id in (123,124);
+cqlsh:employee> select * from Employee_info;
+
+ id  | date_joining | dept    | designation    | name               | projects | salary
+-----+--------------+---------+----------------+--------------------+----------+---------
+ 128 |   2022-01-25 | AgroTec | Senior Manager |  Pranav Jagadheesh | JustVend | 2.2e+06
+ 132 |   2022-01-25 | AgroTec |      Teem Lead |             Swathi | JustVend |   2e+05
+ 123 |   2021-11-03 | AgroTec |             HR |       Nikhil Gowda | Greenkey |   1e+05
+ 124 |   2012-01-25 |  BioTec |        Manager | Prakash Deshpandey | Greenkey |   2e+05
+
+(4 rows)
+cqlsh:employee> insert into Employee_info  (id,name,date_joining,designation,salary,dept) values(132,'Swathi','2022-01-25','Teem Lead',200000,'AgroTec');o do:
+            ... Experiment-1
+            ... Perform the following DB operations using Cassandra.
+            ... 1. Create a keyspace by name Employee
+            ... 2. Create a column family by name Employee-Info with attributes
+            ... Emp_Id Primary Key, Emp_Name, Designation, Date_of_Joining, Salary,
+            ... Dept_Name
+            ... 3. Insert the values into the table in batch
+            ... 3. Update Employee name and Department of Emp-Id 121
+            ... 4. Sort the details of Employee records based on salary
+            ... 5. Alter the schema of the table Employee_Info to add a column Projects which stores a set of Projects done by the corresponding Employee.
+            ... 6. Update the altered table to add project names.
+            ... 7.Create a TTL of 15 seconds to display the values of Employees.
+            ... o do:
+            ... Experiment-1
+            ... Perform the following DB operations using Cassandra.
+            ... 1. Create a keyspace by name Employee
+            ... 2. Create a column family by name Employee-Info with attributes
+            ... Emp_Id Primary Key, Emp_Name, Designation, Date_of_Joining, Salary,
+            ... Dept_Name
+            ... 3. Insert the values into the table in batch
+            ... 3. Update Employee name and Department of Emp-Id 121
+            ... 4. Sort the details of Employee records based on salary
+            ... 5. Alter the schema of the table Employee_Info to add a column Projects which stores a set of Projects done by the corresponding Employee.
+            ... 6. Update the altered table to add project names.
+            ... 7.Create a TTL of 15 seconds to display the values of Employees.
+            ... ;
+SyntaxException: line 1:0 no viable alternative at input 'o' ([o]...)
+cqlsh:employee> insert into Employee_info  (id,name,date_joining,designation,salary,dept) values(142,'Ramya','2022-01-15','Lead',50000,'MicroTec');
+cqlsh:employee> insert into Employee_info  (id,name,date_joining,designation,salary,dept) values(142,'Ramya','2022-01-15','Lead',50000,'MicroTec') using ttl 50;
+cqlsh:employee> select * from Employee_info;
+
+ id  | date_joining | dept     | designation    | name               | projects | salary
+-----+--------------+----------+----------------+--------------------+----------+---------
+ 128 |   2022-01-25 |  AgroTec | Senior Manager |  Pranav Jagadheesh | JustVend | 2.2e+06
+ 132 |   2022-01-25 |  AgroTec |      Teem Lead |             Swathi | JustVend |   2e+05
+ 123 |   2021-11-03 |  AgroTec |             HR |       Nikhil Gowda | Greenkey |   1e+05
+ 142 |   2022-01-15 | MicroTec |           Lead |              Ramya |     null |   50000
+ 124 |   2012-01-25 |   BioTec |        Manager | Prakash Deshpandey | Greenkey |   2e+05
+
+(5 rows)
+cqlsh:employee> select * from Employee_info;
+
+ id  | date_joining | dept    | designation    | name               | projects | salary
+-----+--------------+---------+----------------+--------------------+----------+---------
+ 128 |   2022-01-25 | AgroTec | Senior Manager |  Pranav Jagadheesh | JustVend | 2.2e+06
+ 132 |   2022-01-25 | AgroTec |      Teem Lead |             Swathi | JustVend |   2e+05
+ 123 |   2021-11-03 | AgroTec |             HR |       Nikhil Gowda | Greenkey |   1e+05
+ 124 |   2012-01-25 |  BioTec |        Manager | Prakash Deshpandey | Greenkey |   2e+05
+
+(4 rows)
+cqlsh:employee> update Employee_info using TTl 50 set id=0020,name='MANtercoltwere';
+SyntaxException: line 1:67 mismatched input ';' expecting K_WHERE (... set id=0020,name='MANtercoltwere'[;])
+cqlsh:employee> update Employee_info using TTl 50 set id=0020,name='MANtercoltwere' where id = 124;
+InvalidRequest: Error from server: code=2200 [Invalid query] message="PRIMARY KEY part id found in SET part"
+cqlsh:employee> update Employee_info using TTl 50 set name='MANtercoltwere' where id = 124;
+cqlsh:employee> select * from Employee_info;
+
+ id  | date_joining | dept    | designation    | name              | projects | salary
+-----+--------------+---------+----------------+-------------------+----------+---------
+ 128 |   2022-01-25 | AgroTec | Senior Manager | Pranav Jagadheesh | JustVend | 2.2e+06
+ 132 |   2022-01-25 | AgroTec |      Teem Lead |            Swathi | JustVend |   2e+05
+ 123 |   2021-11-03 | AgroTec |             HR |      Nikhil Gowda | Greenkey |   1e+05
+ 124 |   2012-01-25 |  BioTec |        Manager |    MANtercoltwere | Greenkey |   2e+05
+
+(4 rows)
+cqlsh:employee> select * from Employee_info;
+
+ id  | date_joining | dept    | designation    | name              | projects | salary
+-----+--------------+---------+----------------+-------------------+----------+---------
+ 128 |   2022-01-25 | AgroTec | Senior Manager | Pranav Jagadheesh | JustVend | 2.2e+06
+ 132 |   2022-01-25 | AgroTec |      Teem Lead |            Swathi | JustVend |   2e+05
+ 123 |   2021-11-03 | AgroTec |             HR |      Nikhil Gowda | Greenkey |   1e+05
+ 124 |   2012-01-25 |  BioTec |        Manager |              null | Greenkey |   2e+05
+
+(4 rows)
+cqlsh:employee> 
+cqlsh:employee> 
+cqlsh:employee> select * from Employee_info;
+
+ id  | date_joining | dept    | designation    | name              | projects | salary
+-----+--------------+---------+----------------+-------------------+----------+---------
+ 128 |   2022-01-25 | AgroTec | Senior Manager | Pranav Jagadheesh | JustVend | 2.2e+06
+ 132 |   2022-01-25 | AgroTec |      Teem Lead |            Swathi | JustVend |   2e+05
+ 123 |   2021-11-03 | AgroTec |             HR |      Nikhil Gowda | Greenkey |   1e+05
+ 124 |   2012-01-25 |  BioTec |        Manager |              null | Greenkey |   2e+05
+
+(4 rows)
+cqlsh:employee> Insert the values into the table in batch
+            ... 3. Display the details of the table created and increase the value of the counter
+            ... ;
+SyntaxException: line 1:7 mismatched input 'the' expecting K_INTO (Insert [the]...)
+cqlsh:employee> 
+
