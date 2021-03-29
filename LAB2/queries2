@@ -1,0 +1,13 @@
+cqlsh> create keyspace Library with replication = { 'class':'SimpleStrategy', 'replication_factor':1}; 
+cqlsh> use Library
+   ... ;
+cqlsh:library> create table Library_info(
+           ... std_id int primary key,
+           ... counter_val counter,
+           ... std_name,
+           ... book_name,date_issue);
+SyntaxException: line 4:8 no viable alternative at input ',' (... key,counter_val counter,std_name[,]...)
+cqlsh:library> create table Library_info( std_id int primary key, counter_val counter, std_name text, book_name text,date_issue timestamp);
+cqlsh:library> create table Library_info( std_id int primary key, counter_val counter, std_name text, book_name text,date_issue timestamp);
+InvalidRequest: Error from server: code=2200 [Invalid query] message="Cannot mix counter and non counter columns in the same table"
+cqlsh:library> create table Library_info( counter_val counter,std_id int, std_name text, book_name text,date_issue timestamp,primary key(std_id,std_name,book_name,date_issue) );
