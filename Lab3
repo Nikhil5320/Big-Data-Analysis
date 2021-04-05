@@ -1,0 +1,142 @@
+\Program Files\MongoDB\Server\4.0\bin>mongo
+MongoDB shell version v4.0.8-rc0
+connecting to: mongodb://127.0.0.1:27017/?gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("0cb011dd-66ee-48b0-8eb9-3e33926cfa49") }
+MongoDB server version: 4.0.8-rc0
+Welcome to the MongoDB shell.
+For interactive help, type "help".
+For more comprehensive documentation, see
+        http://docs.mongodb.org/
+Questions? Try the support group
+        http://groups.google.com/group/mongodb-user
+Server has startup warnings:
+2021-04-05T00:28:17.385-0700 I CONTROL  [initandlisten]
+2021-04-05T00:28:17.386-0700 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2021-04-05T00:28:17.386-0700 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2021-04-05T00:28:17.386-0700 I CONTROL  [initandlisten]
+---
+Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+and anyone you share the URL with. MongoDB may use this information to make product
+improvements and to suggest MongoDB products and deployment options to you.
+
+To enable free monitoring, run the following command: db.enableFreeMonitoring()
+To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+> use admin
+switched to db admin
+> show tables
+> exit
+bye
+
+#creating the databse and collection
+
+
+#inserting
+
+use Student
+switched to db Student
+> db.Student.insert({rollno:061,name:"Nikhil Gowda",contact:9632068562,email:"nikhianad@gmail.com"})
+WriteResult({ "nInserted" : 1 })
+> db.Student.insert({rollno:051,name:"Madhukesh Bhatt",contact:9632068562,email:"madhukesh@gmail.com"})
+WriteResult({ "nInserted" : 1 })
+> db.Student.fint().pretty()
+{
+        "_id" : ObjectId("606ad510a6b91d2d572a7962"),
+        "rollno" : 49,
+        "name" : "Nikhil Gowda",
+        "contact" : 9632068562,
+        "email" : "nikhianad@gmail.com"
+}
+{
+        "_id" : ObjectId("606ad514a6b91d2d572a7963"),
+        "rollno" : 41,
+        "name" : "Madhukesh Bhatt",
+        "contact" : 9632068562,
+        "email" : "madhukesh@gmail.com"
+}
+
+#update
+
+ db.Student.find().pretty()
+{
+        "_id" : ObjectId("606ad510a6b91d2d572a7962"),
+        "rollno" : 49,
+        "name" : "Nikhil Gowda",
+        "contact" : 9632068562,
+        "email" : "nikhianad@gmail.com"
+}
+{
+        "_id" : ObjectId("606ad514a6b91d2d572a7963"),
+        "rollno" : 41,
+        "name" : "Madhukesh Bhatt",
+        "contact" : 9632068562,
+        "email" : "Madhu@gmail.com"
+}
+> db.Student.update({"rollno":051},{$set:{"name":"Madhu Bhatt"}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.Student.find().pretty()
+{
+        "_id" : ObjectId("606ad510a6b91d2d572a7962"),
+        "rollno" : 49,
+        "name" : "Nikhil Gowda",
+        "contact" : 9632068562,
+        "email" : "nikhianad@gmail.com"
+}
+{
+        "_id" : ObjectId("606ad514a6b91d2d572a7963"),
+        "rollno" : 41,
+        "name" : "Madhu Bhatt",
+        "contact" : 9632068562,
+        "email" : "Madhu@gmail.com"
+}
+
+#exporting as csv file
+
+C:\Program Files\MongoDB\Server\4.0\bin>mongoexport --db=Student --collection=Student --type=csv --fields=rollno,name,contact,email --out=G:\bda\Student.csv
+2021-04-05T16:06:08.754+0530    connected to: localhost
+2021-04-05T16:06:08.755+0530    exported 2 records
+> use Student
+switched to db Student
+> db.dropDatabase()
+{ "dropped" : "Student", "ok" : 1 }
+
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+
+#importing
+
+C:\Program Files\MongoDB\Server\4.0\bin>mongoimport -d student -c student --type csv --file=G:\bda\Student.csv --headerline
+2021-04-05T16:08:12.654+0530    connected to: localhost
+2021-04-05T16:08:12.784+0530    imported 2 documents
+> show dbs
+admin    0.000GB
+config   0.000GB
+local    0.000GB
+student  0.000GB
+> use student
+switched to db student
+> db.student.find().pretty()
+{
+        "_id" : ObjectId("606ae89464fa714c75e35ff7"),
+        "rollno" : 49,
+        "name" : "Nikhil Gowda",
+        "contact" : 9632068562,
+        "email" : "nikhianad@gmail.com"
+}
+{
+        "_id" : ObjectId("606ae89464fa714c75e35ff8"),
+        "rollno" : 41,
+        "name" : "Madhu Bhatt",
+        "contact" : 9632068562,
+        "email" : "Madhu@gmail.com"
+}
