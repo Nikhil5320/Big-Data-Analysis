@@ -1,1 +1,61 @@
-ss
+1)mkgagan@gagan:~/Downloads/hadoop-3.2.1/sbin$ hdfs dfs -ls /
+Found 1 items
+drwxr-xr-x   - mkgagan supergroup          0 2021-04-19 16:37 /dir1
+
+
+2)mkgagan@gagan:~/Downloads/hadoop-3.2.1/sbin$ hdfs dfs -copyFromLocal ~/temp2.txt /dir1
+mkgagan@gagan:~/Downloads/hadoop-3.2.1/sbin$ hdfs dfs -ls /dir1
+Found 1 items
+-rw-r--r--   1 mkgagan supergroup          7 2021-04-19 16:45 /dir1/temp2.txt
+3)mkgagan@gagan:~/Downloads/hadoop-3.2.1/sbin$ hadoop fs -count -e /dir1/file1
+count: `/dir1/file1': No such file or directory
+mkgagan@gagan:~/Downloads/hadoop-3.2.1/sbin$ hadoop fs -count -e /dir1/temp2.txt
+           0            1                  7 Replicated /dir1/temp2.txt
+mkgagan@gagan:~/Downloads/hadoop-3.2.1/sbin$ hadoop fs -count -e /dir1
+           1            1                  7 EC: /dir1
+4)mkgagan@gagan:~/Downloads/hadoop-3.2.1/sbin$ hdfs dfs -cat /dir1/temp2.txt
+gagan
+
+5)mkgagan@gagan:~/Downloads/hadoop-3.2.1/sbin$ hadoop fs -appendToFile ~/gagan.txt /dir1/temp2.txt
+mkgagan@gagan:~/Downloads/hadoop-3.2.1/sbin$ hdfs dfs -cat /dir1/temp2.txt
+gagan
+
+hadoop commnds done
+6)mkgagan@gagan:~/Downloads/hadoop-3.2.1/sbin$ hdfs dfs -mkdir /sample
+mkgagan@gagan:~/Downloads/hadoop-3.2.1/sbin$ hdfs dfs -cp /dir1/temp2.txt /sample/file1
+mkgagan@gagan:~/Downloads/hadoop-3.2.1/sbin$ hdfs dfs -cat /sample/file1
+gagan
+
+hadoop commnds done
+
+7)mkgagan@gagan:~/Downloads/hadoop-3.2.1/sbin$ hadoop fs -du -h -v /sample/file1
+SIZE  DISK_SPACE_CONSUMED_WITH_ALL_REPLICAS  FULL_PATH_NAME
+27    27                                     /sample/file1
+
+8)mkgagan@gagan:~/Downloads/hadoop-3.2.1/sbin$ hadoop fs -mkdir /dir2
+mkgagan@gagan:~/Downloads/hadoop-3.2.1/sbin$ hadoop fs -mv /dir1/temp2.txt /dir2
+mkgagan@gagan:~/Downloads/hadoop-3.2.1/sbin$ hadoop fs -ls /dir2
+Found 1 items
+-rw-r--r--   1 mkgagan supergroup         27 2021-04-19 16:51 /dir2/temp2.txt
+
+9)
+mkgagan@gagan:~/Downloads/hadoop-3.2.1/sbin$ hadoop fs -rm /sample/file1
+Deleted /sample/file1
+mkgagan@gagan:~/Downloads/hadoop-3.2.1/sbin$ hadoop fs -rm -R /dir1
+Deleted /dir1
+
+mkgagan@gagan:~/Downloads/hadoop-3.2.1/sbin$ hadoop fs -rm -R /dir2
+Deleted /dir2
+mkgagan@gagan:~/Downloads/hadoop-3.2.1/sbin$ hadoop fs -ls /
+Found 1 items
+drwxr-xr-x   - mkgagan supergroup          0 2021-04-19 17:05 /sample
+10)
+mkgagan@gagan:~/Downloads/hadoop-3.2.1/sbin$ hadoop fs -appendToFile ~/gagan.txt /dir1/temp2.txt
+mkgagan@gagan:~/Downloads/hadoop-3.2.1/sbin$ hdfs dfs -cat /dir1/temp2.txt
+hadoop commnds done
+mkgagan@gagan:~/Downloads/hadoop-3.2.1/sbin$ hadoop fs -truncate 3 /dir1.temp2.txt
+truncate: `/dir1.temp2.txt': No such file or directory
+mkgagan@gagan:~/Downloads/hadoop-3.2.1/sbin$ hadoop fs -truncate 3 /dir1/temp2.txt
+Truncating /dir1/temp2.txt to length: 3. Wait for block recovery to complete before further updating this file.
+mkgagan@gagan:~/Downloads/hadoop-3.2.1/sbin$ hdfs dfs -cat /dir1/temp2.txt
+hadmkgagan@gagan:~/Downloads/hadoop-3.2.1/sbin$
